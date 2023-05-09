@@ -6,6 +6,7 @@ pipeline {
         DOCKER_HUB_PASSWORD = "dckr_pat_esOJHDDYVzZy714PS0hscyZ6jDI"
         DOCKER_IMAGE_NAME = "helloworld"
         DOCKER_IMAGE_TAG = "latest"
+        HELM_RELEASE = "helloworld"
     }
 
     stages {

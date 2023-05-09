@@ -14,6 +14,7 @@ pipeline {
                 sh 'ls -l /usr/local'
                 sh "export PATH=$PATH:/usr/local/bin"
                 sh "docker build -t ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} ."
+                sh "docker tag ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}"
             }
         }
 

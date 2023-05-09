@@ -80,11 +80,3 @@ def deploy(env, values_file, image_tag, extra_args = ""){
 //     def minutes = delta.intdiv(60 * 1000) % 60
 //     return "${minutes} min ${seconds} sec"
 // }
-
-// def timeDiff(st) {
-
-//     def delta = (new Date()).getTime() - st.getTime()
-//     def seconds = delta.intdiv(1000) % 60
-//     def minutes = delta.intdiv(60 * 1000) % 60
-//     return "${minutes}" min "${seconds} sec"
-// }

@@ -59,11 +59,12 @@ pipeline {
 }
 def deploy(env, values_file, image_tag, extra_args = ""){
     script{
-        sh ""
+        sh """
         helm dependency update charts/helloworld \
         helm upgrade helloworld charts/helloworld -n ${env} \
         -f charts/helloworld/values.yaml -f charts/helloworld/${values_file} \
         --set service.image.tag=${image_tag} --install --atomic ${extra_args}
+        """
     } 
 }
 

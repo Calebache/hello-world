@@ -15,44 +15,50 @@ string buildStatus
 string timeSpent
 currentBuild.result = "SUCCESS"
 pipeline {
-    agent {
-        label 'default'
-    }
-    environment{
-        CR_HOST = "docker.io/caleb2023"
-    }
-    stages {
-        stage('Deploy to Dev') {
-            when {anyOf {branch "main"; branch 'dev'}}
-            stages {
-                stage{'Build docker file'} {
-                    agent {
-                        label 'kaniko'
-                    }
-                    steps {
-                        container('kaniko'){
-                          script{
-                            sh "/kaniko/executor ==context `pwd` --destination=${CR_HOST}/${projectName}/${repoName}:${env.GIT_COMMIT}"
-                          }
-                        }
+  agent {
+    label 'default'
+  }
+  environment{
+    CR_HOST = "docker.io/caleb2023"
+  }
+  stages {
+    stage('Deploy to Dev') {
+      when {anyOf {branch "main"; branch 'dev'}}
+      stages {
+        stage{'Build docker file'} {
+          agent {
+            label 'kaniko'
+          }
+          steps {
+            container('kaniko'){
+              script{
+                sh "/kaniko/executor ==context `pwd` --destination=${CR_HOST}/${projectName}/${repoName}:${env.GIT_COMMIT}"
+              }
+            }
                         
-                    }
-                }
-            }
+          }
+                
+            
 
-            stage{'Deploy to Dev'} {
-              when { branch 'dev'}
-              steps{
-                deploy("dev", "values.yaml", env.GIT_COMMIT)
-              }
-            }
+            // stage{'Deploy to Dev'} {
+            //   when { branch 'dev'}
+            //   steps{
+            //     deploy("dev", "values.yaml", env.GIT_COMMIT)
+            //   }
+            // }
 
-            stage{'Deploy to Prod'} {
-              when { branch 'main'}
-              steps{
-                deploy("prod", "values-prod.yaml", env.GIT_COMMIT)
-              }
-            }
+            // stage{'Deploy to Prod'} {
+            //   when { branch 'main'}
+            //   steps{
+            //     deploy("prod", "values-prod.yaml", env.GIT_COMMIT)
+            //   }
+            // }
+        }
+        stage{'Deploy to Dev'} {
+          when { branch 'dev'}
+          steps{
+            deploy("dev", "values.yaml", env.GIT_COMMIT)
+          }
         }
 
     }

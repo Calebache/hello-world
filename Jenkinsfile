@@ -2,8 +2,9 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_HUB_CREDENTIALS = credentials('docker-hub-credentials')
-        DOCKER_IMAGE_NAME = "your-docker-image-name"
+        DOCKER_HUB_USERNAME = "caleb2023"
+        DOCKER_HUB_PASSWORD = "dckr_pat_esOJHDDYVzZy714PS0hscyZ6jDI"
+        DOCKER_IMAGE_NAME = "helloworld"
         DOCKER_IMAGE_TAG = "latest"
     }
 

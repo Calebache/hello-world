@@ -1,0 +1,12 @@
+service:
+  env: staging
+
+  ingress:
+    hosts:
+      - hosts: helloworld.codessence.com
+        path: /
+        pathType: Prefix
+    tls:
+      - hosts:
+          - helloworld.codessence.com
+        secretName: helloworld-tls

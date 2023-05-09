@@ -32,23 +32,23 @@ pipeline {
         }
 
         stage(' Deploy Dev') {
-          when { not {anyOf {branch 'staging'; branch 'master'}}}
+          when { not {anyOf {branch 'staging'; branch 'master'} } }
           steps{
-            deploy("dev", "values.yaml" env.GIT_COMMIT, "--debug")
+            deploy("dev", "values.yaml", env.GIT_COMMIT, "--debug")
           }
         }
 
         stage(' Deploy Staging') {
           when { branch 'staging'}
           steps{
-            deploy("staging", "values-staging.yaml" env.GIT_COMMIT, "--debug")
+            deploy("staging", "values-staging.yaml", env.GIT_COMMIT, "--debug")
           }
         }
 
         stage(' Deploy Prod') {
           when { branch 'main'}
           steps{
-            deploy("prod", "values-prod.yaml" env.GIT_COMMIT, "--debug")
+            deploy("prod", "values-prod.yaml", env.GIT_COMMIT, "--debug")
           }
         }
     }

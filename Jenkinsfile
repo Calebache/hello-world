@@ -26,7 +26,6 @@ pipeline {
                 // }
                 sh "docker build -t ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} ."
                 sh "docker login -u ${DOCKER_HUB_USERNAME} -p ${DOCKER_HUB_PASSWORD}"
-                // sh "docker tag ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}"
                 sh "docker tag ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} caleb2023/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}"
                 sh "docker push caleb2023/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}"
             }

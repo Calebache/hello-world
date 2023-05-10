@@ -15,7 +15,7 @@ image:
 service:
   type: NodePort
   port: 80
-  containerPort: 3000
+  containerPort: 80
 
 ingress:
   enabled: false
@@ -57,18 +57,17 @@ tolerations: []
 
 affinity: {}
 
-livenessProbe:
-  httpGet:
-    path: /
-    port: 3000
-  initialDelaySeconds: 180
-  periodSeconds: 300
-  timeoutSeconds: 10
+# livenessProbe:
+#   httpGet:
+#     tcpSocket:
+#     port: http
+#   initialDelaySeconds: 180
+#   periodSeconds: 300
+#   timeoutSeconds: 10
 
-readinessProbe:
-  httpGet:
-    path: /
-    port: 3000
-  initialDelaySeconds: 180
-  periodSeconds: 300
-  timeoutSeconds: 10
+# readinessProbe:
+#   tcpSocket:
+#     port: http
+#   initialDelaySeconds: 180
+#   periodSeconds: 300
+#   timeoutSeconds: 10

@@ -37,7 +37,7 @@ pipeline {
         }
 
         stage(' Deploy Prod') {
-          when { branch 'main'}
+          when { branch 'master'}
           steps{
             deploy("prod", "values-prod.yaml", env.GIT_COMMIT, "--debug")
           }

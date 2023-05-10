@@ -49,9 +49,9 @@ def deploy(env, values_file, image_tag, extra_args = "") {
     script{
         sh "kubectl get pods"
       sh """
-      helm dependency update charts/${HELM_RELEASE}
-      helm upgrade ${HELM_RELEASE} charts/${HELM_RELEASE} -n ${env} \
-      -f charts/${HELM_RELEASE}/values.yaml -f charts/${HELM_RELEASE}/${values_file} \
+      helm dependency update chartz/${HELM_RELEASE}
+      helm upgrade ${HELM_RELEASE} chartz/${HELM_RELEASE} -n ${env} \
+      -f chartz/${HELM_RELEASE}/values.yaml -f chartz/${HELM_RELEASE}/${values_file} \
       --set service.image.tag=${image_tag} --install --atomic ${extra_args}
       """
     }

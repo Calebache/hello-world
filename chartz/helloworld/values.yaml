@@ -13,7 +13,7 @@ image:
 
 
 service:
-  type: NodePort
+  type: ClusterIP
   port: 80
   containerPort: 3000
 

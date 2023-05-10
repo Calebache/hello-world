@@ -2,7 +2,7 @@ service:
   replicas: 1
   service:
     type: ClusterIP
-    port: 8080    # set the correct port number here
+    port: 8080     # <---- Service Port
     containerPort: 3000
 
 ingress:

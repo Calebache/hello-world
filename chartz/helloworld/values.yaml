@@ -61,12 +61,12 @@ livenessProbe:
   httpGet:
     path: /
     port: 80
-  initialDelaySeconds: 5
+  initialDelaySeconds: 30
   periodSeconds: 300
 
 readinessProbe:
   httpGet:
     path: /
     port: 80
-  initialDelaySeconds: 5
+  initialDelaySeconds: 30
   periodSeconds: 300

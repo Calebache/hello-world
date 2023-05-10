@@ -3,10 +3,10 @@ service:
 
   ingress:
     hosts:
-      - hosts: helloworld.codessence.com
+      - hosts: assessmentcloud.com
         path: /
         pathType: Prefix
     tls:
       - hosts:
-          - helloworld.codessence.com
+          - assessmentcloud.com
         secretName: helloworld-tls

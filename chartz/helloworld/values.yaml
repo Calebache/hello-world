@@ -14,8 +14,8 @@ image:
 
 service:
   type: NodePort
-  port: 80
-  containerPort: 80
+  port: 5050
+  containerPort: 5050
 
 ingress:
   enabled: false

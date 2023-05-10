@@ -61,7 +61,7 @@ livenessProbe:
   httpGet:
     path: /
     port: 3000
-  initialDelaySeconds: 30
+  initialDelaySeconds: 180
   periodSeconds: 300
   timeoutSeconds: 10
 
@@ -69,6 +69,6 @@ readinessProbe:
   httpGet:
     path: /
     port: 3000
-  initialDelaySeconds: 30
+  initialDelaySeconds: 180
   periodSeconds: 300
   timeoutSeconds: 10

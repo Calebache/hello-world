@@ -47,6 +47,7 @@ pipeline {
 
 def deploy(env, values_file, image_tag, extra_args = "") {
     script{
+        sh "kubectl get pods"
       sh """
       helm dependency update charts/${HELM_RELEASE}
       helm upgrade ${HELM_RELEASE} charts/${HELM_RELEASE} -n ${env} \

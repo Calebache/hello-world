@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: docker.io/caleb2023/helloworld/helloworld
+  repository: caleb2023/helloworld/helloworld
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: latest
@@ -18,7 +18,7 @@ service:
   containerPort: 3000
 
 ingress:
-  enabled: false
+  enabled: true
   annotations:
     kubernetes.io/ingress.class: nginx
     cert-manager.io/cluster-issuer: "lets-encrypt"
@@ -29,7 +29,7 @@ ingress:
           pathType: Prefix
   tls:
     - hosts:
-        - helloworld.codessence.com
+        - assessmentcloud.com
       secretName: helloworld-tls
 
 resources: {}

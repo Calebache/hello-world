@@ -47,7 +47,10 @@ pipeline {
 
 def deploy(env, values_file, image_tag, extra_args = "") {
     script{
-        sh "kubectl get pods"
+        sh '''
+        az login --service-principal -u 588dc2cf-b5c0-4188-819b-09a346943ffd -p 87h8Q~PE1jReaKupR4Ob0rFmNxMvde.sEaURBaT6 --tenant 706748a9-ed1d-4a90-8a87-ef1594d6ca25
+        az aks get-credentials --resource-group cloudesence-prod-RG --name cloudesence-prod
+        '''
       sh """
       helm dependency update chartz/${HELM_RELEASE}
       helm upgrade ${HELM_RELEASE} chartz/${HELM_RELEASE} -n ${env} \
